@@ -1,6 +1,6 @@
 
 
-TELEGRAM_API_TOKEN = '1472704425:AAGtj2fOwajfgatB2ayZoKQxsGU4UOY8i88'
+TELEGRAM_API_TOKEN = 'Your_API_Token'
 
 
 CUSTOM_REPLY = {"Hi": ['hello', 'Hi!', 'Yo Yo', 'Namaskar', 'こんにちは', 'Hey!', 'Yare Yare'],
