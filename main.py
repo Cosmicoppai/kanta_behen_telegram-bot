@@ -10,6 +10,11 @@ from settings import TELEGRAM_API_TOKEN, CUSTOM_REPLY  # imported from settings.
 bot = telegram.Bot(TELEGRAM_API_TOKEN)
 
 
+def start(update, context):
+    update.message.reply_text("こんにちは, You can track your daily task's and check the weather. send '/help' for more"
+                              "info")
+
+
 def todo(update, context):
     task = update.effective_message.text
     task_id = update.effective_message.message_id
@@ -60,7 +65,9 @@ def help_(update, context):
     update.message.reply_text(
         text="Available Commands:\n"
              "/new:  Add new Task\n"
+             "/delete:  To delete task\n"
              "/list:  To see the list of pending Task's\n"
+             "/weather:  To check Weather\n"
     )
 
 
@@ -122,6 +129,7 @@ updater = Updater(TELEGRAM_API_TOKEN, use_context=True, persistence=my_persisten
 # updater.dispatcher.add_handler(CommandHandler(CUSTOM_REPLY['hi'], custom_reply))
 dispatcher = updater.dispatcher
 
+dispatcher.add_handler(CommandHandler('start', start))
 dispatcher.add_handler(CommandHandler('new', todo))
 dispatcher.add_handler(CommandHandler('help', help_))
 dispatcher.add_handler(CommandHandler('list', show_todo))
